@@ -33,7 +33,7 @@ Public Partial Class Clipboard
             Private _html As String
             Private _image As System.Drawing.Image
             Private _datatable As System.Data.DataTable
-            Private _format As Xb.Forms.Clipboard.Format
+            Private _format As Xb.WindowsForm.Clipboard.Format
 
 
             ''' <summary>
@@ -42,7 +42,7 @@ Public Partial Class Clipboard
             ''' <value></value>
             ''' <returns></returns>
             ''' <remarks></remarks>
-            Public ReadOnly Property Format() As Xb.Forms.Clipboard.Format
+            Public ReadOnly Property Format() As Xb.WindowsForm.Clipboard.Format
                 Get
                     Return Me._format
                 End Get
@@ -106,19 +106,19 @@ Public Partial Class Clipboard
             ''' </summary>
             ''' <remarks></remarks>
             Public Sub New()
-                Me._format = Xb.Forms.Clipboard.GetFormat()
+                Me._format = Xb.WindowsForm.Clipboard.GetFormat()
 
                 Select Case Me._format
-                    Case Xb.Forms.Clipboard.Format.String
-                        Me._string = Xb.Forms.Clipboard.GetString()
-                    Case Xb.Forms.Clipboard.Format.Html
-                        Me._string = Xb.Forms.Clipboard.GetString()
-                        Me._string = Xb.Forms.Clipboard.GetHtml()
-                    Case Xb.Forms.Clipboard.Format.Image
-                        Me._image = Xb.Forms.Clipboard.GetImage()
-                    Case Xb.Forms.Clipboard.Format.Csv
-                        Me._string = Xb.Forms.Clipboard.GetString()
-                        Me._datatable = Xb.Forms.Clipboard.GetDataTable()
+                    Case Xb.WindowsForm.Clipboard.Format.String
+                        Me._string = Xb.WindowsForm.Clipboard.GetString()
+                    Case Xb.WindowsForm.Clipboard.Format.Html
+                        Me._string = Xb.WindowsForm.Clipboard.GetString()
+                        Me._string = Xb.WindowsForm.Clipboard.GetHtml()
+                    Case Xb.WindowsForm.Clipboard.Format.Image
+                        Me._image = Xb.WindowsForm.Clipboard.GetImage()
+                    Case Xb.WindowsForm.Clipboard.Format.Csv
+                        Me._string = Xb.WindowsForm.Clipboard.GetString()
+                        Me._datatable = Xb.WindowsForm.Clipboard.GetDataTable()
                 End Select
             End Sub
 
@@ -207,7 +207,7 @@ Public Partial Class Clipboard
         Protected Overridable Sub Dispose(ByVal disposing As Boolean)
             If Not Me._disposedValue Then
                 If disposing Then
-                    Xb.Util.Out("Xb.Forms.Clipboard.Listener Disposing...")
+                    Xb.Util.Out("Xb.WindowsForm.Clipboard.Listener Disposing...")
                     ' ビューアを解除
                     Dim sts As Boolean = ChangeClipboardChain(Me.Handle, _nextHandle)
                     ReleaseHandle()

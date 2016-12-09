@@ -19,8 +19,8 @@ Partial Public Class Effect
 
         Private ReadOnly _control As Windows.Forms.Control
         Private ReadOnly _form As Windows.Forms.Form
-        Private ReadOnly _fromParam As Xb.Forms.ViewParams
-        Private ReadOnly _toParam As Xb.Forms.ViewParams
+        Private ReadOnly _fromParam As Xb.WindowsForm.ViewParams
+        Private ReadOnly _toParam As Xb.WindowsForm.ViewParams
         Private ReadOnly _expectedUpdates As Integer
         Private ReadOnly _timer As System.Threading.Timer
         Private ReadOnly _addLeft As Double
@@ -56,14 +56,14 @@ Partial Public Class Effect
         ''' <param name="duration"></param>
         ''' <remarks></remarks>
         Public Sub New(ByVal control As Windows.Forms.Control, _
-                                ByVal toParam As Xb.Forms.ViewParams, _
+                                ByVal toParam As Xb.WindowsForm.ViewParams, _
                                 ByVal duration As Integer)
 
             Me._dummyControlInUiThread = control
             Me._control = control
-            Me._form = Xb.Forms.Util.GetForm(control)
+            Me._form = Xb.WindowsForm.Util.GetForm(control)
 
-            Me._fromParam = New Xb.Forms.ViewParams(Me._control)
+            Me._fromParam = New Xb.WindowsForm.ViewParams(Me._control)
             Me._toParam = toParam.Format((Me._control))
 
             '何回描画処理を行うかの予定回数。
@@ -90,8 +90,8 @@ Partial Public Class Effect
         ''' <remarks></remarks>
         Private Sub New(ByVal control As Windows.Forms.Control, _
                         ByVal form As Windows.Forms.Form, _
-                        ByVal fromParam As Xb.Forms.ViewParams, _
-                        ByVal toParam As Xb.Forms.ViewParams, _
+                        ByVal fromParam As Xb.WindowsForm.ViewParams, _
+                        ByVal toParam As Xb.WindowsForm.ViewParams, _
                         ByVal expectedUpdates As Integer, _
                         ByVal count As Integer)
 
@@ -189,12 +189,12 @@ Partial Public Class Effect
         ''' </summary>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        Public Function Rollback() As Xb.Forms.Effect.Executer
+        Public Function Rollback() As Xb.WindowsForm.Effect.Executer
             '現在のアニメーションを停止
             Me._timer.Dispose()
 
             '起動時の渡し値と現在のカウントで、逆方向のアニメーションオブジェクトを生成する。
-            Return New Xb.Forms.Effect.Executer(Me._control, _
+            Return New Xb.WindowsForm.Effect.Executer(Me._control, _
                                                  Me._form, _
                                                  Me._toParam, _
                                                  Me._fromParam, _

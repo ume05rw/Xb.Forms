@@ -52,7 +52,7 @@ Public Partial Class Util
     Public Shared Sub Alert(ByVal message As String, ByVal ex As Exception)
         Dim errText As String = System.String.Join(vbCrLf, Xb.Util.GetErrorString(ex))
         Xb.Util.Out(message & vbCrLf & errText)
-        Xb.Forms.Util.Alert(message _
+        Xb.WindowsForm.Util.Alert(message _
                              & vbCrLf _
                              & vbCrLf _
                              & If(errText.Length > 200, errText.Substring(0, 200) _
@@ -98,7 +98,7 @@ Public Partial Class Util
         Next
 
         Xb.Util.Out(message & vbCrLf & errText)
-        Xb.Forms.Util.Alert(message & vbCrLf & vbCrLf & If(msgText.Length > 200, _
+        Xb.WindowsForm.Util.Alert(message & vbCrLf & vbCrLf & If(msgText.Length > 200, _
                                                              msgText.Substring(0, 200) & "....", _
                                                              msgText))
 
@@ -225,7 +225,7 @@ Public Partial Class Util
         If (TypeOf control Is Windows.Forms.Form) Then
             Return CType(control, Windows.Forms.Form)
         Else
-            Return Xb.Forms.Util.GetForm(control.Parent)
+            Return Xb.WindowsForm.Util.GetForm(control.Parent)
         End If
 
     End Function

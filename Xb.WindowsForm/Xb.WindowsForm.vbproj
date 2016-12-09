@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DA5A6C12-B705-41D6-828D-FBB04079E68E}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Xb.Forms</RootNamespace>
-    <AssemblyName>Xb.Forms</AssemblyName>
+    <RootNamespace>Xb.WindowsForm</RootNamespace>
+    <AssemblyName>Xb.WindowsForm</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -20,7 +20,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Xb.Forms.xml</DocumentationFile>
+    <DocumentationFile>Xb.WindowsForm.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
@@ -30,7 +30,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Xb.Forms.xml</DocumentationFile>
+    <DocumentationFile>Xb.WindowsForm.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
@@ -77,17 +77,17 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Xb\Forms\Util.vb" />
-    <Compile Include="Xb\Forms\Clipboard.vb" />
-    <Compile Include="Xb\Forms\Clipboard.Listener.vb" />
-    <Compile Include="Xb\Forms\Control.vb" />
-    <Compile Include="Xb\Forms\Control.DropReceiver.vb" />
-    <Compile Include="Xb\Forms\Data.vb" />
-    <Compile Include="Xb\Forms\Effect.vb" />
-    <Compile Include="Xb\Forms\Effect.Executer.vb" />
-    <Compile Include="Xb\Forms\Monitor.vb" />
-    <Compile Include="Xb\Forms\Screen.vb" />
-    <Compile Include="Xb\Forms\ViewParams.vb" />
+    <Compile Include="Xb\WindowsForm\Util.vb" />
+    <Compile Include="Xb\WindowsForm\Clipboard.vb" />
+    <Compile Include="Xb\WindowsForm\Clipboard.Listener.vb" />
+    <Compile Include="Xb\WindowsForm\Control.vb" />
+    <Compile Include="Xb\WindowsForm\Control.DropReceiver.vb" />
+    <Compile Include="Xb\WindowsForm\Data.vb" />
+    <Compile Include="Xb\WindowsForm\Effect.vb" />
+    <Compile Include="Xb\WindowsForm\Effect.Executer.vb" />
+    <Compile Include="Xb\WindowsForm\Monitor.vb" />
+    <Compile Include="Xb\WindowsForm\Screen.vb" />
+    <Compile Include="Xb\WindowsForm\ViewParams.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

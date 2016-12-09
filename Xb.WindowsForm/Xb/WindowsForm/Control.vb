@@ -18,7 +18,7 @@ Public Partial Class Control
         If (TypeOf control Is Windows.Forms.Form) Then
             Return DirectCast(control, Windows.Forms.Form)
         Else
-            Return Xb.Forms.Control.GetForm(control.Parent)
+            Return Xb.WindowsForm.Control.GetForm(control.Parent)
         End If
 
     End Function
@@ -43,7 +43,7 @@ Public Partial Class Control
 
             ' 列挙したコントロールにコントロールが含まれている場合は再帰呼び出しする
             If (ctrl.HasChildren) Then
-                Dim cFindControl As Windows.Forms.Control = Xb.Forms.Control.FindControl(ctrl, name)
+                Dim cFindControl As Windows.Forms.Control = Xb.WindowsForm.Control.FindControl(ctrl, name)
 
                 ' 再帰呼び出し先でコントロールが見つかった場合はそのまま返す
                 If (Not cFindControl Is Nothing) Then Return cFindControl
@@ -69,7 +69,7 @@ Public Partial Class Control
 
             '子コントロールに子があるとき、再帰取得する。
             If (ctrl.Controls IsNot Nothing AndAlso ctrl.Controls.Count > 0) Then
-                result.AddRange(Xb.Forms.Control.GetAllChildren(ctrl))
+                result.AddRange(Xb.WindowsForm.Control.GetAllChildren(ctrl))
             End If
         Next
 
@@ -90,7 +90,7 @@ Public Partial Class Control
     Public Shared Sub SetTooltip(ByVal control As Windows.Forms.Control, _
                                     ByVal message As String, _
                                     Optional ByVal title As String = "", _
-                                    Optional ByVal icon As Xb.Forms.Util.DialogIconType = Xb.Forms.Util.DialogIconType.Info)
+                                    Optional ByVal icon As Xb.WindowsForm.Util.DialogIconType = Xb.WindowsForm.Util.DialogIconType.Info)
 
         Dim toolTip1 As New System.Windows.Forms.ToolTip()
 
@@ -102,11 +102,11 @@ Public Partial Class Control
 
         'ツールチップに表示するアイコン
         Select Case icon
-            Case Xb.Forms.Util.DialogIconType.Info
+            Case Xb.WindowsForm.Util.DialogIconType.Info
                 toolTip1.ToolTipIcon = Windows.Forms.ToolTipIcon.Info
-            Case Xb.Forms.Util.DialogIconType.Error
+            Case Xb.WindowsForm.Util.DialogIconType.Error
                 toolTip1.ToolTipIcon = Windows.Forms.ToolTipIcon.Error
-            Case Xb.Forms.Util.DialogIconType.Warning
+            Case Xb.WindowsForm.Util.DialogIconType.Warning
                 toolTip1.ToolTipIcon = Windows.Forms.ToolTipIcon.Warning
             Case Else
                 toolTip1.ToolTipIcon = Windows.Forms.ToolTipIcon.Info

@@ -60,13 +60,13 @@ Public Partial Class Clipboard
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Shared Function GetFormat() As Xb.Forms.Clipboard.Format
+    Public Shared Function GetFormat() As Xb.WindowsForm.Clipboard.Format
 
-        Dim result As Xb.Forms.Clipboard.Format = Xb.Forms.Clipboard.Format.NoData, _
+        Dim result As Xb.WindowsForm.Clipboard.Format = Xb.WindowsForm.Clipboard.Format.NoData, _
             data As Windows.Forms.IDataObject = System.Windows.Forms.Clipboard.GetDataObject()
 
         '値が存在しないとき、それを示す型を返す。
-        If (data Is Nothing) Then Return Xb.Forms.Clipboard.Format.NoData
+        If (data Is Nothing) Then Return Xb.WindowsForm.Clipboard.Format.NoData
 
         For Each format As String In data.GetFormats()
             Select Case format
@@ -74,25 +74,25 @@ Public Partial Class Clipboard
                     Windows.Forms.DataFormats.UnicodeText
 
                     '既にHTML, CSVが選択されているとき、上書きしない。
-                    If (result = Xb.Forms.Clipboard.Format.Html _
-                        OrElse result = Xb.Forms.Clipboard.Format.Csv) Then Exit Select
+                    If (result = Xb.WindowsForm.Clipboard.Format.Html _
+                        OrElse result = Xb.WindowsForm.Clipboard.Format.Csv) Then Exit Select
 
-                    result = Xb.Forms.Clipboard.Format.String
+                    result = Xb.WindowsForm.Clipboard.Format.String
 
                 Case System.Windows.Forms.DataFormats.CommaSeparatedValue
 
-                    result = Xb.Forms.Clipboard.Format.Csv
+                    result = Xb.WindowsForm.Clipboard.Format.Csv
 
                 Case System.Windows.Forms.DataFormats.Html
 
-                    result = Xb.Forms.Clipboard.Format.Html
+                    result = Xb.WindowsForm.Clipboard.Format.Html
 
                 Case Windows.Forms.DataFormats.Bitmap, _
                     Windows.Forms.DataFormats.Dib, _
                     Windows.Forms.DataFormats.MetafilePict, _
                     Windows.Forms.DataFormats.Tiff
 
-                    result = Xb.Forms.Clipboard.Format.Image
+                    result = Xb.WindowsForm.Clipboard.Format.Image
                 Case Else
                     '何もしない。
             End Select
@@ -112,10 +112,10 @@ Public Partial Class Clipboard
     ''' </remarks>
     Public Shared Function IsString() As Boolean
 
-        Dim format As Xb.Forms.Clipboard.Format = GetFormat()
-        Return (format = Xb.Forms.Clipboard.Format.String _
-                OrElse format = Xb.Forms.Clipboard.Format.Html _
-                OrElse format = Xb.Forms.Clipboard.Format.Csv)
+        Dim format As Xb.WindowsForm.Clipboard.Format = GetFormat()
+        Return (format = Xb.WindowsForm.Clipboard.Format.String _
+                OrElse format = Xb.WindowsForm.Clipboard.Format.Html _
+                OrElse format = Xb.WindowsForm.Clipboard.Format.Csv)
 
     End Function
 
@@ -127,7 +127,7 @@ Public Partial Class Clipboard
     ''' <remarks></remarks>
     Public Shared Function IsHtml() As Boolean
 
-        Return (GetFormat() = Xb.Forms.Clipboard.Format.Html)
+        Return (GetFormat() = Xb.WindowsForm.Clipboard.Format.Html)
 
     End Function
 
@@ -139,7 +139,7 @@ Public Partial Class Clipboard
     ''' <remarks></remarks>
     Public Shared Function IsImage() As Boolean
 
-        Return (GetFormat() = Xb.Forms.Clipboard.Format.Image)
+        Return (GetFormat() = Xb.WindowsForm.Clipboard.Format.Image)
 
     End Function
 
@@ -151,7 +151,7 @@ Public Partial Class Clipboard
     ''' <remarks></remarks>
     Public Shared Function IsCsv() As Boolean
 
-        Return (GetFormat() = Xb.Forms.Clipboard.Format.Csv)
+        Return (GetFormat() = Xb.WindowsForm.Clipboard.Format.Csv)
 
     End Function
 
@@ -569,8 +569,8 @@ Public Partial Class Clipboard
     '''' </summary>
     '''' <returns></returns>
     '''' <remarks></remarks>
-    'Public Shared Function GetInnerFormats() As List(Of Xb.Forms.Clipboard.InnerFormat)
-    '    Dim formats As List(Of Xb.Forms.Clipboard.InnerFormat) = New List(Of Xb.Forms.Clipboard.InnerFormat)()
+    'Public Shared Function GetInnerFormats() As List(Of Xb.WindowsForm.Clipboard.InnerFormat)
+    '    Dim formats As List(Of Xb.WindowsForm.Clipboard.InnerFormat) = New List(Of Xb.WindowsForm.Clipboard.InnerFormat)()
 
     '    Dim data As Windows.Forms.IDataObject = System.Windows.Forms.Clipboard.GetDataObject()
 
@@ -579,47 +579,47 @@ Public Partial Class Clipboard
     '        For Each format As String In data.GetFormats()
     '            Select Case format
     '                Case System.Windows.Forms.DataFormats.Bitmap
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.Bitmap)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.Bitmap)
     '                Case System.Windows.Forms.DataFormats.CommaSeparatedValue
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.CommaSeparatedValue)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.CommaSeparatedValue)
     '                Case System.Windows.Forms.DataFormats.Dib
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.Dib)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.Dib)
     '                Case System.Windows.Forms.DataFormats.Dif
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.Dif)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.Dif)
     '                Case System.Windows.Forms.DataFormats.EnhancedMetafile
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.EnhancedMetafile)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.EnhancedMetafile)
     '                Case System.Windows.Forms.DataFormats.FileDrop
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.FileDrop)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.FileDrop)
     '                Case System.Windows.Forms.DataFormats.Html
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.Html)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.Html)
     '                Case System.Windows.Forms.DataFormats.Locale
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.Locale)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.Locale)
     '                Case System.Windows.Forms.DataFormats.MetafilePict
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.MetafilePict)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.MetafilePict)
     '                Case System.Windows.Forms.DataFormats.OemText
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.OemText)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.OemText)
     '                Case System.Windows.Forms.DataFormats.Palette
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.Palette)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.Palette)
     '                Case System.Windows.Forms.DataFormats.PenData
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.PenData)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.PenData)
     '                Case System.Windows.Forms.DataFormats.Riff
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.Riff)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.Riff)
     '                Case System.Windows.Forms.DataFormats.Rtf
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.Rtf)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.Rtf)
     '                Case System.Windows.Forms.DataFormats.Serializable
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.Serializable)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.Serializable)
     '                Case System.Windows.Forms.DataFormats.StringFormat
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.StringFormat)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.StringFormat)
     '                Case System.Windows.Forms.DataFormats.SymbolicLink
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.SymbolicLink)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.SymbolicLink)
     '                Case System.Windows.Forms.DataFormats.Text
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.Text)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.Text)
     '                Case System.Windows.Forms.DataFormats.Tiff
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.Tiff)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.Tiff)
     '                Case System.Windows.Forms.DataFormats.UnicodeText
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.UnicodeText)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.UnicodeText)
     '                Case System.Windows.Forms.DataFormats.WaveAudio
-    '                    formats.Add(Xb.Forms.Clipboard.InnerFormat.WaveAudio)
+    '                    formats.Add(Xb.WindowsForm.Clipboard.InnerFormat.WaveAudio)
     '                Case Else
     '                    '何もしない
     '            End Select

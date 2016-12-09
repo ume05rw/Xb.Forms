@@ -318,14 +318,14 @@ Public Class Monitor
     Public Event Shaked As EventHandler
     'Public Event Swiped As EventHandler
 
-    Private _history As List(Of Xb.Forms.ViewParams)
+    Private _history As List(Of Xb.WindowsForm.ViewParams)
     Private _control As Windows.Forms.Control
     Private _form As Windows.Forms.Form
     Private _mouseHandle As IntPtr = IntPtr.Zero
-    Private _delegate As Xb.Forms.Monitor.HookProcedureDelegate
+    Private _delegate As Xb.WindowsForm.Monitor.HookProcedureDelegate
 
     Private _isMouseButtonOn As Boolean
-    Private _mouseButtonStartPoint As Xb.Forms.ViewParams
+    Private _mouseButtonStartPoint As Xb.WindowsForm.ViewParams
 
     Private _timer As Windows.Forms.Timer
     Private _lastClickEventTime As DateTime = DateTime.MinValue
@@ -343,9 +343,9 @@ Public Class Monitor
             Throw New ArgumentException("渡し値コントロールが検出出来ません。")
         End If
 
-        Me._history = New List(Of Xb.Forms.ViewParams)()
+        Me._history = New List(Of Xb.WindowsForm.ViewParams)()
         Me._control = control
-        Me._form = Xb.Forms.Util.GetForm(Me._control)
+        Me._form = Xb.WindowsForm.Util.GetForm(Me._control)
         Me._delegate = New HookProcedureDelegate(AddressOf OnMouseChanged)
         Me._isMouseButtonOn = False
         Me._mouseButtonStartPoint = Nothing
@@ -426,12 +426,12 @@ Public Class Monitor
     Private Sub UpdateHistory(ByVal messageId As Integer)
 
         '現在のコントロールの座標・表示領域情報を履歴に追加する。
-        Dim current As Xb.Forms.ViewParams
+        Dim current As Xb.WindowsForm.ViewParams
 
         If (Me._history.Count <= 0) Then
-            current = New Xb.Forms.ViewParams(Me._control, Nothing)
+            current = New Xb.WindowsForm.ViewParams(Me._control, Nothing)
         Else
-            current = New Xb.Forms.ViewParams(Me._control, Me._history.Item(Me._history.Count - 1))
+            current = New Xb.WindowsForm.ViewParams(Me._control, Me._history.Item(Me._history.Count - 1))
         End If
 
 
@@ -461,7 +461,7 @@ Public Class Monitor
     ''' <remarks></remarks>
     Private Sub CheckEvent(ByVal messageId As Integer)
 
-        Dim current, before As Xb.Forms.ViewParams, _
+        Dim current, before As Xb.WindowsForm.ViewParams, _
             x, y, addX, addY, absAddX, absAddY, mouseX, mouseY, _
             mouseAddX, mouseAddY, mouseAbsAddX, mouseAbsAddY As Double, _
             isKeepInMouse, isShaked, isSwiped As Boolean
@@ -700,7 +700,7 @@ Public Class Monitor
 
         Dim changeCount As Integer = 0, _
             buttonOn As Boolean = False, _
-            point, lastButtonUp As Xb.Forms.ViewParams
+            point, lastButtonUp As Xb.WindowsForm.ViewParams
 
         lastButtonUp = Nothing
 

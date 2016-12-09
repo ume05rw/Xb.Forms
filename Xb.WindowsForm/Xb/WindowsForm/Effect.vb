@@ -23,7 +23,7 @@ Partial Public Class Effect
     <System.Runtime.InteropServices.DllImport("user32.dll")> _
     Private Shared Function AnimateWindow(ByVal windowHandle As IntPtr, _
                                             ByVal time As Integer, _
-                                            ByVal animateFlags As Xb.Forms.Effect.WindowFlags) As Boolean
+                                            ByVal animateFlags As Xb.WindowsForm.Effect.WindowFlags) As Boolean
     End Function
 
     'ウインドウのフェードイン
@@ -40,7 +40,7 @@ Partial Public Class Effect
         If (form Is Nothing) Then Throw New ArgumentException("Formが検知できません。")
 
         form.Hide()
-        Xb.Forms.Effect.AnimateWindow(form.Handle, duration, WindowFlags.AwActivate Or WindowFlags.AwBlend)
+        Xb.WindowsForm.Effect.AnimateWindow(form.Handle, duration, WindowFlags.AwActivate Or WindowFlags.AwBlend)
         form.Show()
     End Sub
 
@@ -49,7 +49,7 @@ Partial Public Class Effect
         If (form Is Nothing) Then Throw New ArgumentException("Formが検知できません。")
 
         form.Hide()
-        Xb.Forms.Effect.AnimateWindow(form.Handle, duration, WindowFlags.AwSlide Or WindowFlags.AwVerNegative)
+        Xb.WindowsForm.Effect.AnimateWindow(form.Handle, duration, WindowFlags.AwSlide Or WindowFlags.AwVerNegative)
         form.Show()
     End Sub
 End Class

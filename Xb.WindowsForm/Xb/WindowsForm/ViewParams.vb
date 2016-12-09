@@ -79,7 +79,7 @@ Public Class ViewParams
     ''' <param name="control"></param>
     ''' <remarks></remarks>
     Friend Sub New(ByVal control As Windows.Forms.Control, _
-                    ByVal before As Xb.Forms.ViewParams)
+                    ByVal before As Xb.WindowsForm.ViewParams)
 
         If (control Is Nothing) Then Return
 
@@ -162,7 +162,7 @@ Public Class ViewParams
     ''' </summary>
     ''' <param name="control"></param>
     ''' <remarks></remarks>
-    Public Function Format(ByVal control As Windows.Forms.Control) As Xb.Forms.ViewParams
+    Public Function Format(ByVal control As Windows.Forms.Control) As Xb.WindowsForm.ViewParams
 
         If (Me.X = Integer.MinValue) Then Me.X = control.Location.X
         If (Me.Y = Integer.MinValue) Then Me.Y = control.Location.Y
